@@ -54,8 +54,6 @@ module.exports = function(grunt) {
           grunt.file.mkdir(options.outputDir);
       }
 
-      //grunt.log.write()
-
       files             = fs.readdirSync(options.audioDir);
       outputJsonFile    = options.outputFileName.split(".")[0];
 

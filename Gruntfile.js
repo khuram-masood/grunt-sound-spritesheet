@@ -29,22 +29,15 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    sound_spritesheet: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
+    soundSpritesheet: {
       custom_options: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+            audioDir: './ballCalls',
+            outputDir: 'output',
+            outputFileName:'bingo.mp3',
+            outputFormat:'mp3'
         }
+
       }
     },
 
@@ -65,7 +58,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'sound_spritesheet', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'soundSpritesheet']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

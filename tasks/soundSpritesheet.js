@@ -23,20 +23,21 @@ var jsonfile = require('jsonfile');
 var events = require('events');
 var audioMetaData = require('../lib/audioMetaData').AudioMetaData();
 var allMetaExtracted = new events.EventEmitter();
+var totalFiles;
 
 
 
 module.exports = function(grunt) {
 
 
-  grunt.registerMultiTask('soundSpritesheet', 'Combines audio files into one audio file and creates json data for cue points.', function() {
+  grunt.registerTask('soundSpritesheet', 'Combines audio files into one audio file and creates json data for cue points.', function() {
 
       var done = this.async();
       jsonfile.spaces = 4;
 
       var throwError = function(error){
           grunt.log.error(error);
-          done(true);
+          done(false);
       };
 
       var options = this.options({
@@ -45,6 +46,12 @@ module.exports = function(grunt) {
         outputFileName:'',
         outputFormat:''
     });
+
+      for(var option in options){
+          if(options[option] === '' || options[option] === null){
+              throwError('Option **'+option+'** is missing');
+          }
+      }
 
       if(!grunt.file.isDir(options.audioDir)){
           throwError('Audio Directory does not exist');
@@ -74,7 +81,7 @@ module.exports = function(grunt) {
           if(audioFiles.length){
               getMeta();
           }else{
-              throwError('No MP3 files found');
+              throwError('No MP3 or OGG files found in'+' '+options.audioDir);
           }
 
       };
@@ -111,6 +118,7 @@ module.exports = function(grunt) {
 
       var createSpriteSound = function(){
           spriteSheet = fs.createWriteStream(options.outputDir+'/'+options.outputFileName);
+          totalFiles = audioFiles.length;
           assembleSpriteSheet();
       };
 
@@ -134,6 +142,7 @@ module.exports = function(grunt) {
       var assembleSpriteSheet = function () {
           if (!audioFiles.length) {
               spriteSheet.end("Done");
+              grunt.log.ok(totalFiles+' audio files merged');
               done(true);
               return;
           }

@@ -23,9 +23,20 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "scripts": {
-    "test": "grunt test"
-  },
+  "keywords": [
+    "spritesheet",
+    "audio spritesheet",
+    "sound spritesheet",
+    "mp3 spritesheet",
+    "ogg spritesheet",
+    "id3v1",
+    "id3v2",
+    "mp3",
+    "ogg",
+    "tags",
+    "tag",
+    "howler"
+  ],
   "dependencies": {
     "jsonfile": "^2.2.3",
     "musicmetadata": "^2.0.2"
@@ -38,8 +49,6 @@
   },
   "peerDependencies": {
     "grunt": "~0.4.5"
-  },
-  "keywords": [
-    "gruntplugin"
-  ]
+  }
+
 }

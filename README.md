@@ -54,7 +54,15 @@ Path to audio files
 Type: `String`
 required
 
-Path to output directory. If directory is not there , it will be created
+#### options.outputFileName
+Type: `String`
+required
+
+#### options.outputFormat
+Type: `String`
+required
+
+file format . Either mp3 or ogg for now.
 
 ### Usage Examples
 
@@ -70,8 +78,10 @@ grunt.initConfig({
   },
 });
 
-``` 
-json audio sprite data generated
+### Sample generated Json data file
+each entry starts with the file name in spriteSheet and have start point and end points in an array
+
+```js
 {
     "1": [
         0,
@@ -81,7 +91,7 @@ json audio sprite data generated
         6740.81723356009,
         2430.4
     ],
-    "lazer": [
+    "laser": [
         9171.21723356009,
         2221.4
     ],
@@ -91,8 +101,16 @@ json audio sprite data generated
     ]
 }
 
-labels are extracted from audio files.
+### Usage with Howler
 
+```js
+var sound = new Howl({
+  urls: ['bingo.mp3'],
+  sprite: path-to-json-object-file
+});
+
+// shoot the laser!
+sound.play('laser');
 
 ## Release History
 _(0.1.0)_

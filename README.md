@@ -1,8 +1,13 @@
 # grunt-sound-spritesheet
 
 > Combines audio files into one audio file and creates json data for cue points.
-> supports mp3 and ogg formats
-> Compatabile with Howlerjs https://github.com/goldfire/howler.js/
+
+# supported formats
+    * mp3
+    * ogg
+
+
+> Compatabile with Howlerjs
 
 ## Getting Started
 

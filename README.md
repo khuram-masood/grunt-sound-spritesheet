@@ -77,7 +77,7 @@ grunt.initConfig({
     }
   },
 });
-
+```
 ### Sample generated Json data file
 each entry starts with the file name in spriteSheet and have start point and end points in an array
 
@@ -100,7 +100,7 @@ each entry starts with the file name in spriteSheet and have start point and end
         2848.3
     ]
 }
-
+```
 ### Usage with Howler
 
 ```js
@@ -111,9 +111,11 @@ var sound = new Howl({
 
 // shoot the laser!
 sound.play('laser');
+```
 
 ## Release History
 _(0.1.0)_
+_(0.1.2)_
 
 ## Todo
 * more audio formats

@@ -1,9 +1,11 @@
 # grunt-sound-spritesheet
 
 > Combines audio files into one audio file and creates json data for cue points.
+> supports mp3 and ogg formats
+> Compatabile with Howlerjs https://github.com/goldfire/howler.js/
 
 ## Getting Started
-This plugin requires Grunt `~0.4.5`
+
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -17,73 +19,80 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-sound-spritesheet');
 ```
 
-## The "sound_spritesheet" task
+## The "soundSpritesheet" task
 
 ### Overview
-In your project's Gruntfile, add a section named `sound_spritesheet` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `soundSpritesheet` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  sound_spritesheet: {
+  soundSpritesheet: {
     options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+      audioDir: './audioFiles',
+      outputDir: 'output',
+      outputFileName:'big.mp3',
+      outputFormat:'mp3'
+    }
   },
 });
 ```
 
 ### Options
 
-#### options.separator
+#### options.audioDir
 Type: `String`
-Default value: `',  '`
+required
 
-A string value that is used to do something with whatever.
+Path to audio files
 
-#### options.punctuation
+#### options.outputDir
 Type: `String`
-Default value: `'.'`
+required
 
-A string value that is used to do something else with whatever else.
+Path to output directory. If directory is not there , it will be created
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
 ```js
 grunt.initConfig({
-  sound_spritesheet: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  sound_spritesheet: {
+  soundSpritesheet: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+      audioDir: './audioFiles',
+      outputDir: 'output',
+      outputFileName:'bingo.ogg',
+      outputFormat:'ogg'
+    }
   },
 });
-```
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+``` 
+json audio sprite data generated
+{
+    "1": [
+        0,
+        2116.8999999999996
+    ],
+    "2": [
+        6740.81723356009,
+        2430.4
+    ],
+    "lazer": [
+        9171.21723356009,
+        2221.4
+    ],
+    "test": [
+        11392.61723356009,
+        2848.3
+    ]
+}
+
+labels are extracted from audio files.
+
 
 ## Release History
-_(Nothing yet)_
+_(0.1.0)_
+
+## Future plan
+* more audio formats
+* ability to add silence gap between audio files
+

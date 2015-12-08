@@ -1,7 +1,7 @@
 {
   "name": "grunt-sound-spritesheet",
   "description": "Combines audio files into one audio file and creates json data for cue points.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "grunt-sound-spritesheet",
   "author": {
     "name": "Khuram Masood",

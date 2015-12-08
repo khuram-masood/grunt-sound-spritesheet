@@ -115,7 +115,7 @@ sound.play('laser');
 ## Release History
 _(0.1.0)_
 
-## Future plan
+## Todo
 * more audio formats
 * ability to add silence gap between audio files
 
